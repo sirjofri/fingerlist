@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Finger List</string>
+    <string name="addnewprompt">Click + to add new entries</string>
+	<string name="manageprompt">Enter the finger address:</string>
+	<string name="save">Save</string>
+	<string name="delete">Delete</string>
+	<string name="cancel">Cancel</string>
+	<string name="nosave">Unable to save</string>
+	<string name="nofile">File not found</string>
+
+</resources>

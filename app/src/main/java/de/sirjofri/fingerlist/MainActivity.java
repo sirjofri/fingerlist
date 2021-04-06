@@ -8,6 +8,7 @@ import android.view.*;
 import android.content.*;
 import android.widget.AdapterView.*;
 import java.io.*;
+import androidx.swiperefreshlayout.widget.*;
 
 public class MainActivity extends Activity 
 {
@@ -17,6 +18,8 @@ public class MainActivity extends Activity
 	ReadWriter rw;
 	MainActivity self;
 	TextView hint;
+	SwipeRefreshLayout swl;
+	private int remaining;
 	
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -25,6 +28,7 @@ public class MainActivity extends Activity
         setContentView(R.layout.main);
 		self = this;
 		
+		// I use this to find icons. ignore it...
 	//	findViewById(android.R.drawable.ic_menu_
 	
 		hint = findViewById(R.id.hint);
@@ -46,6 +50,15 @@ public class MainActivity extends Activity
 		});
 		
 		hint.setVisibility(fingerlist.size() == 0 ? View.VISIBLE : View.GONE);
+		
+		swl = findViewById(R.id.swipe);
+		swl.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener(){
+			@Override
+			public void onRefresh()
+			{
+				reloadItems();
+			}
+		});
     }
 
 	@Override
@@ -63,6 +76,9 @@ public class MainActivity extends Activity
 			public void run()
 			{
 				adapter.notifyDataSetChanged();
+				remaining--;
+				if (remaining <= 0)
+					swl.setRefreshing(false);
 			}
 		});
 	}
@@ -111,6 +127,8 @@ public class MainActivity extends Activity
 	
 	public void reloadItems()
 	{
+		remaining = fingerlist.size();
+		swl.setRefreshing(true);
 		Iterator i = fingerlist.iterator();
 		while (i.hasNext())
 			((FingerEntry)i.next()).load();

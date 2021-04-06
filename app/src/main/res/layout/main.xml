@@ -1,4 +1,5 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="top"
@@ -10,9 +11,15 @@
 		android:padding="10dp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
-	<ListView
-		android:id="@+id/fingerlist"
+	
+	<androidx.swiperefreshlayout.widget.SwipeRefreshLayout
+		android:id="@+id/swipe"
 		android:layout_width="match_parent"
-		android:layout_height="wrap_content" />
-
+		android:layout_height="wrap_content" >
+		<ListView
+			android:id="@+id/fingerlist"
+			android:layout_width="match_parent"
+			android:layout_height="wrap_content" />
+	</androidx.swiperefreshlayout.widget.SwipeRefreshLayout>
+	
 </LinearLayout>

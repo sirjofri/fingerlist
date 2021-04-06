@@ -42,7 +42,7 @@ public class FingerEntry
 			public void run()
 			{
 				content = "Loading";
-				adapter.notifyDataSetChanged();
+				activity.notifyDataChanged();
 				try{
 					String[] parts = address.split("@");
 					String hostpart;

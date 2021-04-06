@@ -81,8 +81,9 @@ public class MainActivity extends Activity
 				{
 					EditText e = dview.findViewById(R.id.entry);
 					if (toReplace != null)
-						fingerlist.remove(toReplace);
-					fingerlist.add(new FingerEntry(e.getText().toString(), adapter, self));
+						toReplace.setAddress(e.getText().toString());
+					else
+						fingerlist.add(new FingerEntry(e.getText().toString(), adapter, self));
 					adapter.notifyDataSetChanged();
 					rw.save(fingerlist);
 					hint.setVisibility(fingerlist.size() == 0 ? View.VISIBLE : View.GONE);

@@ -1,27 +1,27 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 21
-    buildToolsVersion "21.1.0"
+	compileSdkVersion 21
+	buildToolsVersion "21.1.0"
 
-    defaultConfig {
-        applicationId "de.sirjofri.fingerlist"
-        minSdkVersion 14
-        targetSdkVersion 29
-        // pairs of two: majorminorpatch
-        // same in name: major.minor.patch (no leading zeroes)
-        versionCode 100000
-        versionName "1.0.0"
-    }
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-        }
-    }
+	defaultConfig {
+		applicationId "de.sirjofri.fingerlist"
+		minSdkVersion 14
+		targetSdkVersion 29
+		// pairs of two: majorminorpatch
+		// same in name: major.minor.patch (no leading zeroes)
+		versionCode 100000
+		versionName "1.0.0"
+	}
+	buildTypes {
+		release {
+			minifyEnabled false
+			proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+		}
+	}
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+	compile fileTree(dir: 'libs', include: ['*.jar'])
 	implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

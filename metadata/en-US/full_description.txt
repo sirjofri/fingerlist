@@ -1,0 +1,3 @@
+Finger List displays the finger results of your friends and their servers in a list.   Just add ytheir finger addresses and see their status. Add a server address and see who's online.
+
+Finger is an old protocol which can display information about users and their current plans and projects, as well as contact information. This fully depends on the setup of the specific finger server. It is ualso used for microblogging.

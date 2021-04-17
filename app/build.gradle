@@ -8,10 +8,10 @@ android {
 		applicationId "de.sirjofri.fingerlist"
 		minSdkVersion 14
 		targetSdkVersion 29
-		// pairs of two: majorminorpatch
+		// pairs: major(2)minor(2)patch(3)
 		// same in name: major.minor.patch (no leading zeroes)
-		versionCode 100000
-		versionName "1.0.0"
+		versionCode 100003
+		versionName "1.0.3"
 	}
 	buildTypes {
 		release {

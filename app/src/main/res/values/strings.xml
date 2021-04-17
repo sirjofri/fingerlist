@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">Finger List</string>
+    <string name="app_name">FingerList</string>
     <string name="addnewprompt">Click + to add new entries</string>
 	<string name="manageprompt">Enter the finger address:</string>
 	<string name="save">Save</string>

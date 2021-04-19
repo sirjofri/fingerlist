@@ -1,0 +1,1 @@
+Finger client in a list format, suitable for microblogging and status messages.

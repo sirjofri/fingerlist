@@ -10,8 +10,8 @@ android {
 		targetSdkVersion 29
 		// pairs: major(2)minor(2)patch(3)
 		// same in name: major.minor.patch (no leading zeroes)
-		versionCode 100005
-		versionName "1.0.5"
+		versionCode 100006
+		versionName "1.0.6"
 	}
 	buildTypes {
 		release {

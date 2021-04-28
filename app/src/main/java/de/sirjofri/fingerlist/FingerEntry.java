@@ -72,7 +72,8 @@ public class FingerEntry
 					Socket sock = new Socket(host, port);
 					PrintWriter out = new PrintWriter(sock.getOutputStream(), true);
 					BufferedReader in = new BufferedReader(new InputStreamReader(sock.getInputStream()));
-					out.println(req);
+					out.print(req + "\r\n"); // explicit CRLF
+					out.flush();
 					content = new String();
 					int character;
 					while ((character = in.read()) != -1)

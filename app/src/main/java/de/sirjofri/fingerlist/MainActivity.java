@@ -128,6 +128,10 @@ public class MainActivity extends Activity
 	public void reloadItems()
 	{
 		remaining = fingerlist.size();
+		if (remaining < 1) {
+			swl.setRefreshing(false);
+			return;
+		}
 		swl.setRefreshing(true);
 		Iterator i = fingerlist.iterator();
 		while (i.hasNext())
@@ -229,12 +233,12 @@ class ReadWriter
 	public void save(LinkedList<FingerEntry> list)
 	{
 		try{
-		FileOutputStream fos = context.openFileOutput(filename, context.MODE_PRIVATE);
-		byte[] tosave = fString(list);
-		fos.write(tosave);
-		fos.close();
-		} catch(Exception e)
-		{
+			FileOutputStream fos = context.openFileOutput(filename, context.MODE_PRIVATE);
+			byte[] tosave = fString(list);
+			fos.write(tosave);
+			fos.close();
+		} catch(Exception e){
+			/* we can't ignore this */
 			Toast.makeText(context, R.string.nosave, Toast.LENGTH_SHORT).show();
 			Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
@@ -252,8 +256,9 @@ class ReadWriter
 			}
 			sc.close();
 		} catch(FileNotFoundException e){
-			Toast.makeText(context, R.string.nofile, Toast.LENGTH_SHORT).show();
-			Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
+			/* it is likely safe to ignore it */
+			//Toast.makeText(context, R.string.nofile, Toast.LENGTH_SHORT).show();
+			//Toast.makeText(context, e.getMessage(), Toast.LENGTH_LONG).show();
 		}
 		return ll;
 	}

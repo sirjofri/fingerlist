@@ -8,6 +8,6 @@
 	<string name="delete">Delete</string>
 	<string name="cancel">Cancel</string>
 	<string name="nosave">Unable to save</string>
-	<string name="nofile">File not found</string>
+	<string name="nofile">Config file not found</string>
 
 </resources>

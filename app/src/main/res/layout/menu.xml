@@ -4,13 +4,13 @@
 		android:id="@+id/addbutton"
 		android:title="Add"
 		android:showAsAction="always"
-		android:icon="@android:drawable/ic_menu_add"
+		android:icon="@drawable/ic_add"
     />
 	<item
 		android:id="@+id/updatebutton"
 		android:title="Update"
 		android:showAsAction="always"
-		android:icon="@android:drawable/ic_menu_rotate"
+		android:icon="@drawable/ic_refresh"
 	/>
 
 </menu>

@@ -8,6 +8,10 @@ It shows the addresses of the users as well as their finger status (known as .pl
 
 The app was created using AIDE (the android app, build android apps on android) and uses no third-party libraries (except the standard android libs).
 
+[<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png"
+     alt="Get it on F-Droid"
+     height="80">](https://f-droid.org/packages/de.sirjofri.fingerlist/)
+
 Usage
 -----
 

@@ -1,5 +1,6 @@
 package de.sirjofri.fingerlist;
 
+import android.annotation.SuppressLint;
 import android.app.*;
 import android.os.*;
 import android.widget.*;
@@ -9,6 +10,8 @@ import android.content.*;
 import android.widget.AdapterView.*;
 import java.io.*;
 import androidx.swiperefreshlayout.widget.*;
+import android.net.Uri;
+
 
 public class MainActivity extends Activity 
 {
@@ -20,13 +23,29 @@ public class MainActivity extends Activity
 	TextView hint;
 	SwipeRefreshLayout swl;
 	private int remaining;
-	
+
+	@Override
+	protected void onNewIntent(Intent intent) {
+		super.onNewIntent(intent);
+		Uri data = getIntent().getData();
+		if( data != null ) {
+			manageItem( null, data.toString());
+		} else {
+			manageItem( null, "URI is null for some reason");
+		}
+	}
+
     @Override
     protected void onCreate(Bundle savedInstanceState)
     {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
-		self = this;
+        self = this;
+
+		Uri data = getIntent().getData();
+		if( data != null ) {
+			manageItem( null, data.toString());
+		}
 		
 		// I use this to find icons. ignore it...
 	//	findViewById(android.R.drawable.ic_menu_
@@ -45,7 +64,7 @@ public class MainActivity extends Activity
 			@Override
 			public void onItemClick(AdapterView<?> parent, View view, int pos, long id)
 			{
-				manageItem(fingerlist.get(pos));
+				manageItem(fingerlist.get(pos),null);
 			}
 		});
 		
@@ -61,7 +80,8 @@ public class MainActivity extends Activity
 		});
     }
 
-	@Override
+	@SuppressLint("ResourceType")
+    @Override
 	public boolean onCreateOptionsMenu(Menu menu)
 	{
 		getMenuInflater().inflate(R.layout.menu, menu);
@@ -83,7 +103,7 @@ public class MainActivity extends Activity
 		});
 	}
 	
-	public void manageItem(final FingerEntry toReplace)
+	public void manageItem(final FingerEntry toReplace, String preload)
 	{
 		LayoutInflater inflater = getLayoutInflater();
 		final View dview = inflater.inflate(R.layout.dialogmanage, null);
@@ -92,6 +112,8 @@ public class MainActivity extends Activity
 			.setView(dview);
 		if (toReplace != null)
 			((EditText)dview.findViewById(R.id.entry)).setText(toReplace.getAddress());
+		if (preload != null)
+			((EditText)dview.findViewById(R.id.entry)).setText(preload);
 		builder.setPositiveButton(R.string.save, new DialogInterface.OnClickListener(){
 				public void onClick(DialogInterface d, int id)
 				{
@@ -112,7 +134,7 @@ public class MainActivity extends Activity
 				}
 			});
 		if (toReplace != null)
-		builder.setNeutralButton(R.string.delete, new DialogInterface.OnClickListener() {
+			builder.setNeutralButton(R.string.delete, new DialogInterface.OnClickListener() {
 				public void onClick(DialogInterface d, int id)
 				{
 					fingerlist.remove(toReplace);
@@ -143,7 +165,7 @@ public class MainActivity extends Activity
 	{
 		switch(item.getItemId()) {
 		case R.id.addbutton:
-			manageItem(null);
+			manageItem(null, null);
 			break;
 		case R.id.updatebutton:
 			reloadItems();
